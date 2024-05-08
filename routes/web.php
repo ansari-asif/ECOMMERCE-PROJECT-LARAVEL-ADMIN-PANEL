@@ -1,15 +1,13 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/admin/login',function (){
-    return view('admin/auth.login');
-});
 
-Route::get('/admin/register',function (){
-    return "admin register";
-});
+Route::match(['get','post'],'admin/login',[AuthController::class,'login'])->name('login');
+// Route::get('admin/register',[AuthController::class,'register'])->name('register_get');
+Route::match(['get','post'],'admin/register',[AuthController::class,'register'])->name('register');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/admin', function () {
+    return view('admin.dashboard');
 });
