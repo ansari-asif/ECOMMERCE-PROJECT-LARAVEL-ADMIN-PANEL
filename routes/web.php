@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function(){
@@ -10,6 +11,7 @@ Route::prefix('admin')->group(function(){
     
     Route::middleware('auth')->group(function(){
         Route::get('/',[DashboardController::class,'dashboard'])->name('dashboard');
+        Route::get('/users',[UserController::class,'manage_users'])->name('users');
     });
 });
 
