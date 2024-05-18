@@ -26,6 +26,14 @@ class User extends Authenticatable
         "status"
     ];
 
+    public function user_status(){
+        if($this->status==1){
+            return 'Active';
+        }else{
+            return 'Deactive';
+        }
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -35,6 +43,8 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    
 
     /**
      * The attributes that should be cast.

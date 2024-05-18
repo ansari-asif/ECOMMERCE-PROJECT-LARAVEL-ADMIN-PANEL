@@ -56,7 +56,7 @@ class AuthController extends Controller
             if($validator->fails()){
                 return back()->withErrors($validator)->withInput();
             }
-            $user=Auth::attempt(['email'=>$req->email,'password'=>$req->password],$req->remember);
+            $user=Auth::attempt(['email'=>$req->email,'password'=>$req->password,'user_type'=>'admin'],$req->remember);
             if($user){
                 return redirect('/admin');
             }else{
@@ -65,5 +65,10 @@ class AuthController extends Controller
         }else{
             return view('admin.auth.login');    
         }
+    }
+
+    function logout(){
+        Auth::logout();
+        return redirect()->route('login')->with(['success'=>"You are successfully logout."]);
     }
 }
