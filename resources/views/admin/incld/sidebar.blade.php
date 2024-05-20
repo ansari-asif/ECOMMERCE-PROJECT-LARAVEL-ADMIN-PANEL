@@ -31,14 +31,13 @@
           </div>
         </div>
       </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item {{set_menu_open(['dashboard'])}}">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -47,14 +46,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="{{ route('dashboard') }}" class="nav-link {{set_active_url('dashboard')}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v1</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item menu-open">
+          <li class="nav-item {{set_menu_open(['users','add_user'])}}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -64,15 +63,61 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('users') }}" class="nav-link">
+                <a href="{{ route('users') }}" class="nav-link {{set_active_url('users')}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>User List</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('add_user') }}" class="nav-link">
+                <a href="{{ route('add_user') }}" class="nav-link {{set_active_url('add_user')}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add User</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item {{set_menu_open(['ListCategory','addCategory'])}}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Manage Category
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('ListCategory') }}" class="nav-link {{set_active_url('ListCategory')}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Category List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('addCategory') }}" class="nav-link {{set_active_url('addCategory')}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Category</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item {{set_menu_open(['ListSubCategory','addSubCategory'])}}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Manage Sub Category
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('ListSubCategory') }}" class="nav-link {{set_active_url('ListSubCategory')}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sub Category List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('addSubCategory') }}" class="nav-link {{set_active_url('addSubCategory')}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Sub Category</p>
                 </a>
               </li>
             </ul>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\ProductSubCategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,13 @@ Route::prefix('admin')->group(function(){
         Route::match(['get','post'],'/product-category/edit-category/{id}',[ProductCategoryController::class,'editCategory'])->name('editCategory');
         Route::match(['get'],'/product-category/delete-category/{id}',[ProductCategoryController::class,'deleteCategory'])->name('deleteCategory');
         Route::match(['get'],'/product-category/status-category/{id}',[ProductCategoryController::class,'statusCategory'])->name('statusCategory');
+
+        // product Sub Category
+        Route::get('/product-sub-category',[ProductSubCategoryController::class,'ListSubCategory'])->name('ListSubCategory');
+        Route::match(['get','post'],'/product-sub-category/add-sub-category',[ProductSubCategoryController::class,'addSubCategory'])->name('addSubCategory');
+        Route::match(['get','post'],'/product-sub-category/edit-sub-category/{id}',[ProductSubCategoryController::class,'editSubCategory'])->name('editSubCategory');
+        Route::match(['get'],'/product-sub-category/delete-sub-category/{id}',[ProductSubCategoryController::class,'deleteSubCategory'])->name('deleteSubCategory');
+        Route::match(['get'],'/product-sub-category/status-sub-category/{id}',[ProductSubCategoryController::class,'statusSubCategory'])->name('statusSubCategory');
     });
 });
 
