@@ -122,6 +122,29 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item {{set_menu_open(['ListBrand','addBrand','editBrand','ListColor','addColor','editColor'])}}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Manage Misc
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('ListBrand') }}" class="nav-link {{set_active_url('ListBrand')}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Brand List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('ListColor') }}" class="nav-link {{set_active_url('ListColor')}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Color List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ColorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductSubCategoryController;
@@ -34,6 +36,20 @@ Route::prefix('admin')->group(function(){
         Route::match(['get','post'],'/product-sub-category/edit-sub-category/{id}',[ProductSubCategoryController::class,'editSubCategory'])->name('editSubCategory');
         Route::match(['get'],'/product-sub-category/delete-sub-category/{id}',[ProductSubCategoryController::class,'deleteSubCategory'])->name('deleteSubCategory');
         Route::match(['get'],'/product-sub-category/status-sub-category/{id}',[ProductSubCategoryController::class,'statusSubCategory'])->name('statusSubCategory');
+
+        // Brand
+        Route::get('/brand',[BrandController::class,'ListBrand'])->name('ListBrand');
+        Route::match(['get','post'],'/brand/add-brand',[BrandController::class,'addBrand'])->name('addBrand');
+        Route::match(['get','post'],'/brand/edit-brand/{id}',[BrandController::class,'editBrand'])->name('editBrand');
+        Route::match(['get'],'/brand/delete-brand/{id}',[BrandController::class,'deleteBrand'])->name('deleteBrand');
+        Route::match(['get'],'/brand/status-brand/{id}',[BrandController::class,'statusBrand'])->name('statusBrand');
+
+        // Brand
+        Route::get('/color',[ColorController::class,'ListColor'])->name('ListColor');
+        Route::match(['get','post'],'/color/add-color',[ColorController::class,'addColor'])->name('addColor');
+        Route::match(['get','post'],'/color/edit-color/{id}',[ColorController::class,'editColor'])->name('editColor');
+        Route::match(['get'],'/color/delete-color/{id}',[ColorController::class,'deleteColor'])->name('deleteColor');
+        Route::match(['get'],'/color/status-color/{id}',[ColorController::class,'statusColor'])->name('statusColor');
     });
 });
 
