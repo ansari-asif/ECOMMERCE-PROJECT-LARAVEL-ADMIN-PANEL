@@ -5,6 +5,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProductSubCategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,13 @@ Route::prefix('admin')->group(function(){
         Route::match(['get','post'],'/color/edit-color/{id}',[ColorController::class,'editColor'])->name('editColor');
         Route::match(['get'],'/color/delete-color/{id}',[ColorController::class,'deleteColor'])->name('deleteColor');
         Route::match(['get'],'/color/status-color/{id}',[ColorController::class,'statusColor'])->name('statusColor');
+
+        // Product
+        Route::get('/products',[ProductsController::class,'productList'])->name('productList');
+        Route::match(['get','post'],'/products/add-product',[ProductsController::class,'addProduct'])->name('addProduct');
+        Route::match(['get','post'],'/products/add-product/{id}',[ProductsController::class,'editProduct'])->name('editProduct');
+        // Route::match(['get'],'/color/delete-color/{id}',[ColorController::class,'deleteColor'])->name('deleteColor');
+        // Route::match(['get'],'/color/status-color/{id}',[ColorController::class,'statusColor'])->name('statusColor');
     });
 });
 
