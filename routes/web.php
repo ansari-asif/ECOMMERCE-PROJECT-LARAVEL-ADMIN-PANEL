@@ -58,6 +58,7 @@ Route::prefix('admin')->group(function(){
         Route::match(['get','post'],'/products/add-product/{id}',[ProductsController::class,'editProduct'])->name('editProduct');
         // Route::match(['get'],'/color/delete-color/{id}',[ColorController::class,'deleteColor'])->name('deleteColor');
         // Route::match(['get'],'/color/status-color/{id}',[ColorController::class,'statusColor'])->name('statusColor');
+        Route::post('/products/sub-product',[ProductsController::class,'ajax_get_sub_category'])->name('ajax_get_sub_category');
     });
 });
 

@@ -66,54 +66,50 @@
                 </div> 
                 <div class="col-md-4">
                     <div class="form-group">
-                      <label for="status">Brand</label>
-                      <select id="status" class="form-control custom-select @error('status')
-                      is-invalid @enderror" name="status">
+                      <label for="brand">Brand</label>
+                      <select id="brand" class="form-control custom-select @error('brand')
+                      is-invalid @enderror" name="brand">
                         <option selected="" disabled="" value="">Select Brand</option>
-                        <option value="1" 
-                        {{ old('status') == '1' ? 'selected' : '' }}
-                        >Active</option>
-                        <option value="0"
-                        {{ old('status') == '0' ? 'selected' : '' }}
-                        >Deactive</option>
+                        @foreach ($brands as $brand)
+                        <option value="{{$brand->id}}" 
+                        {{ old('brand') == $brand->id ? 'selected' : '' }}
+                        >{{$brand->name}} </option>
+                        @endforeach
                       </select>
-                      <span id="status-error" class="error invalid-feedback">@error('status')
+                      <span id="status-error" class="error invalid-feedback">@error('brand')
                           {{$message}}
                       @enderror</span>
                     </div>
                   </div> 
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="status">Category</label>
-                      <select id="status" class="form-control custom-select @error('status')
-                      is-invalid @enderror" name="status">
+                      <label for="category">Category</label>
+                      <select id="category" class="form-control custom-select @error('status')
+                      is-invalid @enderror" name="category">
                         <option selected="" disabled="" value="">Select Category</option>
-                        <option value="1" 
-                        {{ old('status') == '1' ? 'selected' : '' }}
-                        >Active</option>
-                        <option value="0"
-                        {{ old('status') == '0' ? 'selected' : '' }}
-                        >Deactive</option>
+                        @foreach ($categories as $category)
+                        <option value="{{$category->id}}" 
+                        {{ old('category') == $category->id ? 'selected' : '' }}
+                        >{{$category->name}} </option>
+                        @endforeach
                       </select>
-                      <span id="status-error" class="error invalid-feedback">@error('status')
+                      <span id="status-error" class="error invalid-feedback">@error('category')
                           {{$message}}
                       @enderror</span>
                     </div>
                   </div> 
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="status">Sub Category</label>
-                      <select id="status" class="form-control custom-select @error('status')
-                      is-invalid @enderror" name="status">
+                      <label for="sub_category">Sub Category</label>
+                      <select id="sub_category" class="form-control custom-select @error('sub_category')
+                      is-invalid @enderror" name="sub_category">
                         <option selected="" disabled="" value="">Select Sub Category</option>
                         <option value="1" 
-                        {{ old('status') == '1' ? 'selected' : '' }}
+                        {{ old('sub_category') == '1' ? 'selected' : '' }}
                         >Active</option>
-                        <option value="0"
-                        {{ old('status') == '0' ? 'selected' : '' }}
-                        >Deactive</option>
+                       
                       </select>
-                      <span id="status-error" class="error invalid-feedback">@error('status')
+                      <span id="status-error" class="error invalid-feedback">@error('sub_category')
                           {{$message}}
                       @enderror</span>
                     </div>
@@ -167,4 +163,25 @@
       </div>
     </div>
   </section>
+@endsection
+
+@section('scripts')
+    <script>
+      $(document).ready(function(){
+
+        $(document).on('change','#category',function(e){
+          var $el=$(this);
+          var id =this.value;
+          $.ajax({
+            url:"{{ route('ajax_get_sub_category') }}",
+            method:"POST",
+            dataType:"json",
+            data:{id,_token:'{{csrf_token()}}'},
+            success:function(data){
+              $('#sub_category').html(data);
+            }
+          })
+        });
+      });
+    </script>
 @endsection

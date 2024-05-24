@@ -26,4 +26,7 @@ class ProductCategory extends Model
         return $this->status==1?"Active":"Deactivated";
     }
 
+    public function subcategories(){
+        return $this->hasMany(ProductSubCategory::class, 'product_category');
+    }
 }
