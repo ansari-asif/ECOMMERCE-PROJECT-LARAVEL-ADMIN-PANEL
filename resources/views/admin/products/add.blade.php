@@ -1,4 +1,13 @@
 @extends('admin.layout.base_layout')
+@section('style')
+    <style>
+      .field_set{
+        border: 1px solid red;
+        border-radius: 7px;
+        padding: 8px;
+      }
+    </style>
+@endsection
 @section('content')
 <section class="content-header">
     <div class="container-fluid">
@@ -104,17 +113,90 @@
                       <select id="sub_category" class="form-control custom-select @error('sub_category')
                       is-invalid @enderror" name="sub_category">
                         <option selected="" disabled="" value="">Select Sub Category</option>
-                        <option value="1" 
-                        {{ old('sub_category') == '1' ? 'selected' : '' }}
-                        >Active</option>
-                       
                       </select>
                       <span id="status-error" class="error invalid-feedback">@error('sub_category')
                           {{$message}}
                       @enderror</span>
                     </div>
                   </div> 
-              </div>  
+              </div>
+              <fieldset class="field_set">
+                <div id="product_color_amount_box">
+                  <div class="row" id="row_1">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="color">Product Color</label>
+                        <select id="color" class="form-control" name="color[]">
+                          <option>--select Color---</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="slug">Product Size</label>
+                        <input type="text" id="size" class="form-control @error('size')
+                        is-invalid @enderror " name="size" value="{{old('size')}}" placeholder="Enter size">
+                        
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="slug">Product Amount</label>
+                        <input type="text" id="amount" class="form-control @error('amount')
+                        is-invalid @enderror " name="amount" value="{{old('amount')}}" placeholder="Enter amount">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <br>
+                        <button type="button" class="btn btn-sm btn-danger">DELETE</button>
+                      </div>
+                    </div>
+                  </div>                  
+                </div>
+                <div class="text-center py-3">
+                  <button class="btn btn-sm btn-primary" type="button">Add Product Size/amount/color</button>
+                </div>
+              </fieldset>
+              
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="meta_title">Short Description</label>
+                        <textarea id="my-textarea" class="form-control" name="" rows="3"></textarea>
+                        <span id="exampleInputEmail1-error" class="error invalid-feedback">@error('meta_title')
+                            {{$message}}
+                        @enderror</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="meta_description">Description</label>
+                        <textarea id="my-textarea" class="form-control" name="" rows="3"></textarea>
+                        <span id="exampleInputEmail1-error" class="error invalid-feedback">@error('meta_description')
+                            {{$message}}
+                        @enderror</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="meta_keywords">Additional Info</label>
+                        <textarea id="my-textarea" class="form-control" name="" rows="3"></textarea>
+                        <span id="exampleInputEmail1-error" class="error invalid-feedback">@error('meta_keywords')
+                            {{$message}}
+                        @enderror</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="meta_keywords">Shipping Returns</label>
+                      <textarea id="my-textarea" class="form-control" name="" rows="3"></textarea>
+                      <span id="exampleInputEmail1-error" class="error invalid-feedback">@error('meta_keywords')
+                          {{$message}}
+                      @enderror</span>
+                  </div>
+                </div>
+              </div> 
               <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
